@@ -1,64 +1,25 @@
 <div class="container-fluid pt-5 mb-3">
-        <div class="container">
-            <div class="section-title">
-                <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
-            </div>
-            <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+        </div>
+        <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+            <?php
+            $getFeatureNewItem = $item->getFeatureNewItem(1, 5);
+            foreach ($getFeatureNewItem as $value):
+            ?>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                    <img class="img-fluid h-100" src="anh/<?php echo $value['image'] ?>" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                                href=""><?php echo $item->getCatNameById($value['category'])[0]['name']; ?></a>
+                            <a class="text-white" href=""><small><?php echo date_format(date_create_from_format("Y-m-d H:i:s", $value['created_at']), "M, d Y"); ?></small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="single.php?id=<?php echo $value['id'] ?>"><?php echo substr($value['name'], 0, 40) ?>...</a>
                     </div>
                 </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="img/news-700x435-5.jpg" style="object-fit: cover;">
-                    <div class="overlay">
-                        <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
-                        </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach ?>
         </div>
     </div>
+</div>

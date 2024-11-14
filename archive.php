@@ -1,9 +1,8 @@
 <?php
 include "header.php";
-if(isset($_GET['cate'])){
+if (isset($_GET['cate'])) {
     $cate = $_GET['cate'];
-}
-else{
+} else {
     header('location;index.php');
 }
 $getItemByCat = $item->getItemByCat($cate);
